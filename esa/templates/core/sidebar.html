@@ -1,0 +1,182 @@
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="{{ url_for('static',filename='dist/img/sapa.jpg')}}"
+          class="img-circle elevation-3" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">Extra Sapa APK</a>
+      </div>
+    </div>
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search"
+          placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview"
+        role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+        <li class="nav-item">
+          <a href="{{ url_for('main') }}" class="nav-link active">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              DASHBOARD
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-solid fa-boxes-stacked"></i>
+            <p>
+              PUSAT DATA
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ url_for('semuaBarang') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Barang</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('semuaSupplier') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Supplier</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('semuaPelanggan') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Pelanggan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('semuaKategori') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Kategori</p>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a href="{{ url_for('semuaOutlet') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Outlet</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-solid fa-boxes-stacked"></i>
+            <p>
+              Transaksi
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ url_for('semuaPenjualan') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Penjualan</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('semuaReturn') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Barang Return</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('semuaPelanggan') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pembelian</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-solid fa-boxes-stacked"></i>
+            <p>
+              Laporan
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ url_for('semuaPenjualan') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Laba/Rugi</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url_for('semuaPenjualan') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Transaksi Harian</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-solid fa-boxes-stacked"></i>
+            <p>
+              Users
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ url_for('semuaUsers') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>User</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-solid fa-boxes-stacked"></i>
+            <p>
+              Pengeluaran
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ url_for('semuaPelumar') }}" class="nav-link active">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pengeluaran Marketing</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

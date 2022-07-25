@@ -1,0 +1,157 @@
+{% extends './core/base.html' %}
+
+{% block title %} Data terUsers {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Data Users</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">zetData</a></li>
+                    <li class="breadcrumb-item active">Data blUsers</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-2">
+                    <button type="button" class="btn btn-block btn-primary"
+                        data-toggle="modal"
+                        data-target="#tambah-gusers">klik Tambah
+                        Users</button>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Users Anda</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered
+                            table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Aksi</th>
+                                    <th>Nama Penggunakuuuuuuuuu</th>
+                                    <th>Username</th>
+                                    <th>Hak Akses</th>
+                                    <th>Cabang</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for aaaa, outlet in isiData %}
+                                <tr>
+                                    <td>
+                                        <a
+                                            href="edit-data-users/{{aaaa.id_data_users}}"
+                                            type="button" class="btn btn-block
+                                            btn-warning"><i class="fas fa-solid
+                                                fa-pencil"></i></a>
+                                        <a
+                                            href="delete-data-users/{{aaaa.id_data_users}}"
+                                            type="button" class="btn btn-block
+                                            btn-danger"><i class="fas fa-solid
+                                                fa-trash"></i></a>
+                                    </td>
+                                    <td>{{ aaaa.nama_pengguna}}</td>
+                                    <td>{{ aaaa.username}}</td>
+                                    <td>{{ aaaa.hak_akses}}</td>
+                                    <td>{{ outlet.nama_outlet}}</td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+
+<div class="modal fade" id="tambah-gusers">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/tambah-data-users" method="post">
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="namaPengguna"> Pengguna</label>
+                            <input type="text" class="form-control"
+                                name="nama_pengguna" placeholder="Nama
+                                Pengguna">
+                        </div>
+                        <div class="form-group">
+                            <label for="username"> Username</label>
+                            <input type="text" class="form-control"
+                                name="username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control"
+                                name="password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="hakAkses">Hak Akses</label>
+                            <input type="text" class="form-control"
+                                name="hak_akses" placeholder="Hak Akses">
+                        </div>
+
+
+
+                        <div class="col-sm-6">
+                            <!-- select -->
+                            <div class="form-group">
+                                <label>Cabang</label>
+                                <select name="cabang" class="form-control">
+                                    {%for cabang in dataUsers%}
+                                    <option
+                                        value="{{cabang.toJson()['id_data_outlet']}}">{{cabang.toJson()['nama_outlet']}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default"
+                            data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+{% endblock %}

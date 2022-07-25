@@ -1,0 +1,83 @@
+{% extends './core/base.html' %}
+
+{% block title %} Gk Data Barang {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Edit Data Pelanggan</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Samping Data</a></li>
+                    <li class="breadcrumb-item active">Samping Data Barang</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                
+                    <form action="/update-data-pelanggan" method="post">
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <input type="hidden" class="form-control"
+                                        name="id" placeholder="id_data_pelanggan"
+                                    value="{{data['id_data_pelanggan']}}">
+                                <div class="form-group">
+                                    <label for="namaPelanggan">Nama Pelanggan</label>
+                                    <input type="text" class="form-control"
+                                        name="nama_pelanggan" placeholder="Nama
+                                        Pelanggan"
+                                    value="{{data['nama_pelanggan']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactPelanggan">Contact Pelanggan</label>
+                                    <input type="text" class="form-control"
+                                        name="contact_pelanggan" placeholder="Contact" value="{{data['contact_pelanggan']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="alamatPelanggan">Alamat Pelanggan</label>
+                                    <input type="text" class="form-control"
+                                        name="alamat_pelanggan" placeholder="Alamat Pelanggan" value="{{data['alamat_pelanggan']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="keteranganPelanggan">Keterangan Pelanggan</label>
+                                    <input type="text" class="form-control"
+                                        name="keterangan_pelanggan" placeholder="Keterangan Pelanggan" value="{{data['keterangan_pelanggan']}}">
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                
+                  
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+          

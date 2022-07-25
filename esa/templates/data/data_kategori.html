@@ -1,0 +1,126 @@
+{% extends './core/base.html' %}
+
+{% block title %} Data Kategori {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Data Kategori</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Data</a></li>
+                    <li class="breadcrumb-item active">Data Kategori</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-2">
+                    <button type="button" class="btn btn-block btn-primary"
+                        data-toggle="modal"
+                        data-target="#tambah-kategori">Tambah
+                        kategori</button>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Kategori Anda</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered
+                            table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Aksi</th>
+                                    <th>Nama Kategori</th>
+                                    <th>Keterangan Kategori</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for kategori in data %}
+                                <tr>
+                                    <td>
+                                        <a
+                                            href="edit-data-kategori/{{kategori.toJson()['id_data_kategori']}}"
+                                            type="button" class="btn btn-block
+                                            btn-warning"><i class="fas fa-solid
+                                                fa-pencil"></i></a>
+                                        <a
+                                            href="delete-data-kategori/{{kategori.toJson()['id_data_kategori']}}"
+                                            type="button" class="btn btn-block
+                                            btn-danger"><i class="fas fa-solid
+                                                fa-trash"></i></a>
+                                    </td>
+                                    <td>{{ kategori.toJson()['nama_kategori'] }}</td>
+                                    <td>{{
+                                        kategori.toJson()['keterangan_kategori']
+                                        }}</td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+
+<div class="modal fade" id="tambah-kategori">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Kategori</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/tambah-data-kategori" method="post">
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="namaKategori">Nama Kategori</label>
+                            <input type="text" class="form-control"
+                                name="nama_kategori" placeholder="Nama
+                                Kategori">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="keteranganKategori">Keterangan Kategori</label>
+                            <input type="text" class="form-control"
+                                name="keterangan_kategori"
+                                placeholder="Keterangan Kategori">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default"
+                            data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+{% endblock %}

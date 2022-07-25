@@ -1,0 +1,74 @@
+{% extends './core/base.html' %}
+
+{% block title %} Gk Data Barang {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Edit Data Kategori</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Samping Data</a></li>
+                    <li class="breadcrumb-item active">Samping Data Barang</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                
+                    <form action="/update-data-kategori" method="post">
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <input type="hidden" class="form-control"
+                                        name="id" placeholder="id_data_kategori"
+                                    value="{{data['id_data_kategori']}}">
+                                <div class="form-group">
+                                    <label for="namaKategori">Nama Kategori</label>
+                                    <input type="text" class="form-control"
+                                        name="nama_kategori" placeholder="Nama
+                                        Kategori"
+                                    value="{{data['nama_kategori']}}">
+                                </div>
+                    
+                                <div class="form-group">
+                                    <label for="keteranganKategori">Keterangan Kategori</label>
+                                    <input type="text" class="form-control"
+                                        name="keterangan_kategori" placeholder="Keterangan Kategori" value="{{data['keterangan_kategori']}}">
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                
+                  
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+          

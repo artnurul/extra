@@ -1,0 +1,122 @@
+{% extends './core/base.html' %}
+
+{% block title %} Data Pelanggan {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Data Pelanggan</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Data</a></li>
+                    <li class="breadcrumb-item active">Data Pelanggan</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-2">
+                    <button type="button" class="btn btn-block btn-primary" data-toggle="modal"
+                        data-target="#tambah-pelanggan">Tambah
+                        Pelanggan</button>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Pelanggan Anda</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Aksi</th>
+                                    <th>Nama Pelanggan</th>
+                                    <th>Alamat Pelanggan</th>
+                                    <th>No HP Pelanggan</th>
+                                    <th>Keterangan Pelanggan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for pelanggan in data %}
+                                <tr>
+                                    <td>
+                                    <a href="edit-data-pelanggan/{{pelanggan.toJson()['id_data_pelanggan']}}" type="button" class="btn btn-block btn-warning"><i class="fas fa-solid fa-pencil"></i></a>
+                                    <a href="delete-data-pelanggan/{{pelanggan.toJson()['id_data_pelanggan']}}" type="button" class="btn btn-block btn-danger"><i class="fas fa-solid fa-trash"></i></a>
+                                    </td>
+                                    <td>{{ pelanggan.toJson()['nama_pelanggan'] }}</td>
+                                    <td>{{ pelanggan.toJson()['contact_pelanggan'] }}</td>
+                                    <td>{{ pelanggan.toJson()['alamat_pelanggan'] }}</td>
+                                    <td>{{ pelanggan.toJson()['keterangan_pelanggan'] }}</td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+
+<div class="modal fade" id="tambah-pelanggan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Pelanggan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/tambah-data-pelanggan" method="post">
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="namaPelanggan">Nama Pelanggan</label>
+                            <input type="text" class="form-control" name="nama_pelanggan" placeholder="Nama Pelanggan">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamatPelanggan">Alamat Pelanggan</label>
+                            <input type="text" class="form-control" name="alamat_pelanggan" placeholder="Alamat Pelanggan">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPelanggan">No HP Pelanggan</label>
+                            <input type="text" class="form-control" name="contact_pelanggan" placeholder="No HP Pelanggan">
+                        </div>
+                        <div class="form-group">
+                            <label for="keteranganPelanggan">Keterangan Pelanggan</label>
+                            <input type="text" class="form-control" name="keterangan_pelanggan" placeholder="Keterangan Pelanggan">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+{% endblock %}
+
+
+

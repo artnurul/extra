@@ -1,0 +1,195 @@
+{% extends './core/base.html' %}
+
+{% block title %} Data Penjualan {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Data Penjualan</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Data</a></li>
+                    <li class="breadcrumb-item active">Data Penjualan</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-2">
+                    <button type="button" class="btn btn-block btn-primary"
+                        data-toggle="modal"
+                        data-target="#tambah-penjualan">Tambah
+                        Penjualan</button>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Penjualan Anda</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered
+                            table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Aksi</th>
+                                    <th>Kode Transaksi</th>
+                                    <th>Tanggal Transaksi</th>
+                                    <th>Id Outlet</th>
+                                    <th>Id Barang</th>
+                                    <th>Id Pelanggan</th>
+                                    <th>Qty</th>
+                                    <th>Potongan</th>
+                                    <th>Total Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for penjualan, barang in datacu %}
+                                <tr>
+                                    <td>
+                                        <a
+                                            href="edit-data-penjualan/{{penjualan.id_data_penjualan}}"
+                                            type="button" class="btn btn-block
+                                            btn-warning"><i class="fas fa-solid
+                                                fa-pencil"></i></a>
+                                        <a
+                                            href="delete-data-penjualan/{{penjualan.id_data_penjualan}}"
+                                            type="button" class="btn btn-block
+                                            btn-danger"><i class="fas fa-solid
+                                                fa-trash"></i></a>
+                                    </td>
+                                    <td>{{ penjualan.kode_transaksi
+                                        }}</td>
+                                    <td>{{
+                                        penjualan.tanggal_transaksi
+                                        }}</td>
+                                    <td>{{ penjualan.id_outlet}}</td>
+                                    <td>{{ barang.nama_barang}}</td>
+                                    <td>{{ penjualan.id_pelanggan}}</td>
+                                    <td>{{ penjualan.qty}}</td>
+                                    <td>{{ penjualan.potongan}}</td>
+                                    <td>{{ penjualan.total_harga}}</td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+
+<div class="modal fade" id="tambah-penjualan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Penjualan</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/tambah-data-penjualan" method="post">
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="kodeTransaksi">Kode Transaksi</label>
+                            <input type="text" class="form-control"
+                                name="kode_transaksi" placeholder="Kode
+                                Transaksi">
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggalTransaksi">Tanggal Transaksi</label>
+                            <input type="text" class="form-control"
+                                name="tanggal_transaksi" placeholder="Tanggal
+                                Transaksi">
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- select -->
+                            <div class="form-group">
+                                <label>idOutlet</label>
+                                <select name="id_outlet" class="form-control">
+                                    {%for idOutlet in data%}
+                                    <option
+                                        value="{{idOutlet.toJson()['id_data_outlet']}}">{{idOutlet.toJson()['nama_outlet']}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <!-- select -->
+                            <div class="form-group">
+                                <label>Id Barang</label>
+                                <select name="id_barang" class="form-control">
+                                    {%for idBarang in dataku%}
+                                    <option
+                                        value="{{idBarang.toJson()['id_data_barang']}}">{{idBarang.toJson()['nama_barang']}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <!-- select -->
+                            <div class="form-group">
+                                <label>Id Pelanggan</label>
+                                <select name="id_pelanggan"
+                                    class="form-control">
+                                    {%for idPelanggan in idinPelanggan%}
+                                    <option
+                                        value="{{idPelanggan.toJson()['id_data_pelanggan']}}">{{idPelanggan.toJson()['nama_pelanggan']}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="qty">Qty</label>
+                            <input type="text" class="form-control" name="qty"
+                                placeholder="Qty">
+                        </div>
+                        <div class="form-group">
+                            <label for="potongan">Potongan</label>
+                            <input type="text" class="form-control"
+                                name="potongan" placeholder="Potongan">
+                        </div>
+                        <div class="form-group">
+                            <label for="totalHarga">Total Harga</label>
+                            <input type="text" class="form-control"
+                                name="total_harga" placeholder="Total Harga">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default"
+                            data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+{% endblock %}

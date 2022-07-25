@@ -1,0 +1,133 @@
+{% extends './core/base.html' %}
+
+{% block title %} Gk Data Barang {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Edit Data Barang</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Samping Data</a></li>
+                    <li class="breadcrumb-item active">Samping Data Barang</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+
+                <form action="/update-data-barang" method="post">
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <input type="hidden" class="form-control"
+                                name="id_data_barang"
+                                placeholder="id_data_barang"
+                                value="{{data['id_data_barang']}}">
+                            <div class="form-group">
+                                <label for="namaBarang">Nama Barang</label>
+                                <input type="text" class="form-control"
+                                    name="nama_barang" placeholder="Nama
+                                    Barang"
+                                    value="{{data['nama_barang']}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Kategori</label>
+                                <select name="kategori" class="form-control">
+                                    {%for kategori in dataKategori%}
+                                    <option
+                                        value="{{kategori.toJson()['id_data_kategori']}}">{{kategori.toJson()['nama_kategori']}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="barcode">Barcode</label>
+                                <input type="text" class="form-control"
+                                    name="barcode" placeholder="Barcode"
+                                    value="{{data['barcode']}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="stok">Stok</label>
+                                <input type="text" class="form-control"
+                                    name="stok" placeholder="Stok"
+                                    value="{{data['stok']}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="satuan">Satuan</label>
+                                <input type="text" class="form-control"
+                                    name="satuan" placeholder="Satuan"
+                                    value="{{data['satuan']}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="harga-beli">Harga Beli</label>
+                                <input type="text" class="form-control"
+                                    name="harga_beli" placeholder="Harga
+                                    Beli" value="{{data['harga_beli']}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="harga-jual">Harga Jual</label>
+                                <input type="text" class="form-control"
+                                    name="harga_jual" placeholder="Harga
+                                    Jual" value="{{data['harga_jual']}}">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <!-- select -->
+                                <div class="form-group">
+                                    <label>Supplier</label>
+                                    <select name="supplier"
+                                        class="form-control">
+                                        {%for supplier in dataSupplier%}
+                                        <option
+                                            value="{{supplier.toJson()['id_data_supplier']}}">{{supplier.toJson()['nama_supplier']}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="diskon">Diskon</label>
+                                <input type="text" class="form-control"
+                                    name="diskon" placeholder="Diskon"
+                                    value="{{data['diskon']}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="total">Total</label>
+                                <input type="text" class="form-control"
+                                    name="total" placeholder="Total"
+                                    value="{{data['total']}}">
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default"
+                                data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

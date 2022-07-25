@@ -1,0 +1,170 @@
+{% extends './core/base.html' %}
+
+{% block title %} Data Outlet {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Data Outlet</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Data</a></li>
+                    <li class="breadcrumb-item active">Data Outlet</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-2">
+                    <button type="button" class="btn btn-block btn-primary"
+                        data-toggle="modal"
+                        data-target="#tambah-outlet">Tambah
+                        Outlet</button>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Outlet Anda</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered
+                            table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Aksi</th>
+                                    <th>Nama Outlet</th>
+                                    <th>Nama Branchmanager</th>
+                                    <th>Alamat Outlet</th>
+                                    <th>Contact Outlet</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for outlet in data %}
+                                <tr>
+                                    <td>
+                                        <a
+                                            href="edit-data-outlet/{{outlet.toJson()['id_data_outlet']}}"
+                                            type="button" class="btn btn-block
+                                            btn-warning"><i class="fas fa-solid
+                                                fa-pencil"></i></a>
+                                        <a
+                                            href="delete-data-outlet/{{outlet.toJson()['id_data_outlet']}}"
+                                            type="button" class="btn btn-block
+                                            btn-danger"><i class="fas fa-solid
+                                                fa-trash"></i></a>
+                                    </td>
+                                    <td>{{ outlet.toJson()['nama_outlet'] }}</td>
+                                    <td>{{ outlet.toJson()['nama_branchmanager']
+                                        }}</td>
+                                    <td>{{ outlet.toJson()['alamat_outlet'] }}</td>
+                                    <td>{{ outlet.toJson()['contact_outlet'] }}</td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+
+<div class="modal fade" id="tambah-outlet">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Outlet</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/tambah-data-outlet" method="post">
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="namaOutlet">Nama Outlet</label>
+                            <input type="text" class="form-control"
+                                name="nama_outlet" placeholder="Nama Outlet">
+                        </div>
+                        <div class="form-group">
+                            <label for="namaBranchmanager">Nama Branchmanager</label>
+                            <input type="text" class="form-control"
+                                name="nama_branchmanager" placeholder="Nama
+                                Branchmanager">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamatOutlet">Alamat Outlet</label>
+                            <input type="text" class="form-control"
+                                name="alamat_outlet" placeholder="Alamat
+                                Outlet">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactOutlet">Contact Outlet</label>
+                            <input type="text" class="form-control"
+                                name="contact_outlet" placeholder="Contact
+                                Outlet">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default"
+                            data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                    <section class="content">
+                        <div class="container-fluid">
+                            <!-- SELECT2 EXAMPLE -->
+                            
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Minimal</label>
+                                            <select class="form-control
+                                                select2" style="width:
+                                                100%;">
+                                                <option selected="selected">pilih</option>
+                                                <option>Alaska</option>
+                                                <option>California</option>
+                                                <option>Delaware</option>
+                                                <option>Tennessee</option>
+                                                <option>Texas</option>
+                                                <option>Washington</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    {% endblock %}

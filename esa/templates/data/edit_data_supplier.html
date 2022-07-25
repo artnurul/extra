@@ -1,0 +1,83 @@
+{% extends './core/base.html' %}
+
+{% block title %} Gk Data Barang {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Edit Data Supplier</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Samping Data</a></li>
+                    <li class="breadcrumb-item active">Samping Data Barang</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                
+                    <form action="/update-data-supplier" method="post">
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <input type="hidden" class="form-control"
+                                        name="id" placeholder="id_data_supplier"
+                                    value="{{data['id_data_supplier']}}">
+                                <div class="form-group">
+                                    <label for="namaSupplier">Nama Supplier</label>
+                                    <input type="text" class="form-control"
+                                        name="nama_supplier" placeholder="Nama
+                                        Supplier"
+                                    value="{{data['nama_supplier']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactSupplier">Contact Supplier</label>
+                                    <input type="text" class="form-control"
+                                        name="contact_supplier" placeholder="Contact" value="{{data['contact_supplier']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="alamatSupplier">Alamat Supplier</label>
+                                    <input type="text" class="form-control"
+                                        name="alamat_supplier" placeholder="Alamat Supplier" value="{{data['alamat_supplier']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="keteranganSupplier">Keterangan Supplier</label>
+                                    <input type="text" class="form-control"
+                                        name="keterangan_supplier" placeholder="Keterangan Supplier" value="{{data['keterangan_supplier']}}">
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                
+                  
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+          

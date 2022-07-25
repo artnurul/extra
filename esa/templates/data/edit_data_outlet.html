@@ -1,0 +1,82 @@
+{% extends './core/base.html' %}
+
+{% block title %} Gk Data Outlet {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Edit Data Outlet</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Samping Data</a></li>
+                    <li class="breadcrumb-item active">Samping Data Barang</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                
+                    <form action="/update-data-outlet" method="post">
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <input type="hidden" class="form-control"
+                                        name="id" placeholder="id_data_outlet"
+                                    value="{{data['id_data_outlet']}}">
+                                <div class="form-group">
+                                    <label for="namaOutlet">Nama Outlet</label>
+                                    <input type="text" class="form-control"
+                                        name="nama_outlet" placeholder="Nama Outlet"
+                                    value="{{data['nama_outlet']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="namaBranchmanager">Nama Branchmanager</label>
+                                    <input type="text" class="form-control"
+                                        name="nama_branchmanager" placeholder="Nama Branchmanager" value="{{data['nama_branchmanager']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="alamatOutlet">Alamat Outlet</label>
+                                    <input type="text" class="form-control"
+                                        name="alamat_outlet" placeholder="Alamat Outlet" value="{{data['alamat_outlet']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactOutlet">Contact Outlet</label>
+                                    <input type="text" class="form-control"
+                                        name="contact_outlet" placeholder="Contact Outlet" value="{{data['contact_outlet']}}">
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                
+                  
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+          

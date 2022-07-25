@@ -1,0 +1,122 @@
+{% extends './core/base.html' %}
+
+{% block title %} Data Supplier {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Data Supplier</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Data</a></li>
+                    <li class="breadcrumb-item active">Data Supplier</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="col-2">
+                    <button type="button" class="btn btn-block btn-primary" data-toggle="modal"
+                        data-target="#tambah-supplier">Tambah
+                        Supplier</button>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Daftar Supplier Anda</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Aksi</th>
+                                    <th>Nama Supplier</th>
+                                    <th>Alamat Supplier</th>
+                                    <th>Contact Supplier</th>
+                                    <th>Keterangan Supplier</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for supplier in data %}
+                                <tr>
+                                    <td>
+                                    <a href="edit-data-supplier/{{supplier.toJson()['id_data_supplier']}}" type="button" class="btn btn-block btn-warning"><i class="fas fa-solid fa-pencil"></i></a>
+                                    <a href="delete-data-supplier/{{supplier.toJson()['id_data_supplier']}}" type="button" class="btn btn-block btn-danger"><i class="fas fa-solid fa-trash"></i></a>
+                                    </td>
+                                    <td>{{ supplier.toJson()['nama_supplier'] }}</td>
+                                    <td>{{ supplier.toJson()['alamat_supplier'] }}</td>
+                                    <td>{{ supplier.toJson()['contact_supplier'] }}</td>
+                                    <td>{{ supplier.toJson()['keterangan_supplier'] }}</td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+
+<div class="modal fade" id="tambah-supplier">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Supplier</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/tambah-data-supplier" method="post">
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="namaSupplier">Nama Supplier</label>
+                            <input type="text" class="form-control" name="nama_supplier" placeholder="Nama Supplier">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamatSupplier">Alamat Supplier</label>
+                            <input type="text" class="form-control" name="alamat_supplier" placeholder="Alamat Supplier">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSupplier">Contact Supplier</label>
+                            <input type="text" class="form-control" name="contact_supplier" placeholder="Contact Supplier">
+                        </div>
+                        <div class="form-group">
+                            <label for="keteranganSupplier">Keterangan Supplier</label>
+                            <input type="text" class="form-control" name="keterangan_supplier" placeholder="Keterangan Supplier">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+{% endblock %}
+
+
+

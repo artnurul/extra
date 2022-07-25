@@ -1,0 +1,100 @@
+{% extends './core/base.html' %}
+
+{% block title %} Gk Data Barang {% endblock %}
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Edit Data Barang Return</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Samping Data</a></li>
+                    <li class="breadcrumb-item active">Samping Data Barang</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                
+                    <form action="/update-data-pengeluaran-marketing" method="post">
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <input type="hidden" class="form-control"
+                                        name="id" placeholder="id_data_pengeluaran"
+                                    value="{{datamek['id_data_pengeluaran']}}">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                    <label for="tanggal">Tanggal</label>
+                                    <input type="text" class="form-control"
+                                        name="tanggal" placeholder="Tanggal" value="{{datamek['tanggal']}}">
+                                </div>
+                                    <label for="kode">kode</label>
+                                    <input type="text" class="form-control"
+                                        name="kode" placeholder="Kode"
+                                    value="{{datamek['kode']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pembayaran">Pembayaran</label>
+                                    <input type="text" class="form-control"
+                                        name="pembayaran" placeholder="Pembayaran" value="{{datamek['pembayaran']}}">
+                                </div>
+                                </div>
+                                    <label for="jumlah">Jumlah</label>
+                                    <input type="text" class="form-control"
+                                        name="jumlah" placeholder="Jumlah"
+                                    value="{{datamek['jumlah']}}">
+                                </div>
+                                </div>
+                                    <label for="sumberDana">Sumber Dana</label>
+                                    <input type="text" class="form-control"
+                                        name="sumber_dana" placeholder="Sumber Dana"
+                                    value="{{datamek['sumber_dana']}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="keterangan">Keterangan</label>
+                                    <input type="text" class="form-control"
+                                        name="keterangan" placeholder="Keterangan" value="{{datamek['keterangan']}}">
+                                </div>
+                                </div>
+                                    <label for="metodeBayar">Metode Bayar</label>
+                                    <input type="text" class="form-control"
+                                        name="metode_bayar" placeholder="Metode Bayar"
+                                    value="{{datamek['metode_bayar']}}">
+                                </div>
+                                
+                                
+                               
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                
+                  
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
